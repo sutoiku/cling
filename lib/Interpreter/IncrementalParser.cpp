@@ -777,7 +777,7 @@ namespace cling {
     }
   }
 
-  void IncrementalParser::SetTransformers(bool isChildInterpreter) {
+  void IncrementalParser::SetTransformers(bool isChildInterpreter) { /*
     // Add transformers to the IncrementalParser, which owns them
     Sema* TheSema = &m_CI->getSema();
     // Register the AST Transformers
@@ -800,7 +800,7 @@ namespace cling {
     WrapperTransformers.emplace_back(new CheckEmptyTransactionTransformer(TheSema));
 
     m_Consumer->SetTransformers(std::move(ASTTransformers),
-                                std::move(WrapperTransformers));
+                                std::move(WrapperTransformers)); */
   }
 
 
