@@ -256,7 +256,10 @@ IncrementalExecutor::runStaticInitializersOnce(const Transaction& T) {
     // Execute the ctor/dtor function!
     if (llvm::Function *F = llvm::dyn_cast<llvm::Function>(FP)) {
       const llvm::StringRef fName = F->getName();
-      executeInit(fName);
+      const IncrementalExecutor::ExecutionResult res = executeInit(fName);
+      if (res != kExeSuccess) {
+        return res;
+      }
 /*
       initFuncs.push_back(F);
       if (fName.startswith("_GLOBAL__sub_I_")) {
