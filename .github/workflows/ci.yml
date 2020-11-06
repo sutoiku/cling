@@ -91,6 +91,7 @@ jobs:
           fi
         fi
         export CLING_BUILD_FLAGS="$CLING_BUILD_FLAGS -DCLANG_ENABLE_ARCMT=OFF -DCLANG_ENABLE_STATIC_ANALYZER=OFF -DLLVM_ENABLE_WARNINGS=OFF -DCLING_ENABLE_WARNINGS=ON"
+        export CLING_BUILD_FLAGS="$CLING_BUILD_FLAGS -DLLVM_ENABLE_EH=ON -DLLVM_ENABLE_RTTI=ON -DLLVM_ENABLE_THREADS=OFF -DLLVM_OPTIMIZED_TABLEGEN=ON -DCXX_EXTENSIONS=OFF -DLLVM_BUILD_TOOLS=OFF" # Stoic
         if [[ ${{ matrix.name }} == *"compile"* ]]; then
           python3 cpt.py -y --check-requirements --current-dev=tar --with-cmake-flags="$CLING_BUILD_FLAGS" --with-cling-url=https://github.com/$REPO --cling-branch=${{ github.head_ref }}
         elif [[ ${{ matrix.name }} == *"fromtar"* ]]; then
