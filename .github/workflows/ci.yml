@@ -77,7 +77,13 @@ jobs:
           python3 cpt.py --no-test -y --check-requirements --current-dev=tar --with-cmake-flags="$CLING_BUILD_FLAGS" --with-cling-url=https://github.com/$REPO --cling-branch=${{ github.head_ref }} --with-binary-llvm
         fi
       working-directory: tools/packaging/
+
     - name: Setup tmate session
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
       timeout-minutes: 1 # When debugging increase to a suitable value!
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.name }}
+        path: "/home/runner/ci/build/*.bz2"
+
