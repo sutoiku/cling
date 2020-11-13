@@ -21,9 +21,10 @@ jobs:
             os: ubuntu-20.04
             compiler: gcc
 
-          - name: ubuntu-20.04-clang-compile
-            os: ubuntu-20.04
-            compiler: clang
+          # - name: ubuntu-20.04-clang-compile
+          #   os: ubuntu-20.04
+          #   compiler: clang
+
     steps:
     - uses: actions/checkout@v2
     - name: Setup compiler on Linux
