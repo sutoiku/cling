@@ -30,6 +30,7 @@ jobs:
     - name: Setup compiler on Linux
       run: |
         sudo apt-get update
+        sudo apt-get upgrade
         if [ "${{ matrix.compiler }}" = "gcc" ]; then
           echo "CC=gcc" >> $GITHUB_ENV
           echo "CXX=g++" >> $GITHUB_ENV
